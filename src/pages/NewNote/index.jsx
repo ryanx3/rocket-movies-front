@@ -11,40 +11,43 @@ import { Scroll } from '../../components/Scroll'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { Title } from '../../components/Title'
-import { Main } from "../../components/Main"
+import { Content } from "../../components/Content"
 
 export function NewNote() {
-  return(
+  return (
     <Container>
-      <Header/>
-        
-      <Main>
-        <Scroll top="53px"/>
+      <Header />
 
-        <ButtonBack to="/" title="Voltar" icon={FiArrowLeft}/>
+      <main>
+        <Content>
+          <Scroll top="53px" />
 
-        <Title title="Novo filme"/>
+          <ButtonBack to="/" title="Voltar" icon={FiArrowLeft} />
 
-        <InputSection>
-            <Input placeholder="Título"/>
-            <Input placeholder="Sua nota (de 0 a 5)"/>
-        </InputSection>
+          <Title title="Novo filme" />
 
-            <Textarea placeholder="Observações"/>
+          <InputSection>
+            <Input placeholder="Título" />
+            <Input placeholder="Sua nota (de 0 a 5)" />
+          </InputSection>
 
-        <Section title="Marcadores">
+          <Textarea placeholder="Observações" />
+
+          <Section title="Marcadores">
             <div className="backgroundNoteItem">
-            <NoteItem value="React" readOnly $isNew={true}/>
-            <NoteItem value="Novo marcador" $isNew={false}/>
+              <NoteItem value="React" readOnly $isNew={true} />
+              <NoteItem value="Novo marcador" $isNew={false} />
             </div>
-        </Section>
+          </Section>
 
-        <Footer>
-            <Button title="Excluir filme" backgroundColor="#0D0C0F" titleColor="#FF859B"/>
-            <Button title="Salvar alterações"/>
-        </Footer>
+          <Footer>
+            <Button title="Excluir filme" backgroundColor="#0D0C0F" titleColor="#FF859B" />
+            <Button title="Salvar alterações" />
+          </Footer>
 
-      </Main>
+        </Content>
+
+      </main>
     </Container>
-    )
+  )
 }

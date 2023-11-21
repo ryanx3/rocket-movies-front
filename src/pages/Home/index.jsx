@@ -3,20 +3,20 @@ import { FiPlus } from 'react-icons/fi'
 import { Header } from "../../components/Header"
 import { Title } from "../../components/Title"
 import { Note } from "../../components/Note"
-import { Main } from "../../components/Main"
+import { Content } from "../../components/Content"
 
-import { Container, Content } from "./styles";
+import { Container, MainTags } from "./styles";
 
 export function Home() {
   return(
     <Container>
       <Header/>
 
-      <Main> 
+      <Content> 
 
         <Title to="/newnote" title="Meus filmes" text="Adicionar filme" icon={FiPlus}/>
       
-        <Content>
+        <MainTags>
 
           <div className="scrollColor"></div>
 
@@ -70,9 +70,9 @@ export function Home() {
           ], 
         }}
         />
-        </Content>
+        </MainTags>
         
-      </Main>
+      </Content>
     </Container>
   )
 }

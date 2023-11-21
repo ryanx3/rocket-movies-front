@@ -1,6 +1,6 @@
 import { Container } from './styles'
 
-export function Main({children}) { 
+export function Content({children}) { 
   return(
     <Container>
       {children}

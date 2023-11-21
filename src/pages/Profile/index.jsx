@@ -3,43 +3,78 @@ import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi'
 import { Container, Avatar } from './styles'
 
 import { ButtonBack } from '../../components/ButtonBack'
-import { Textarea } from '../../components/Textarea'
-import { NoteItem } from '../../components/NoteItem'
-import { Section } from '../../components/Section'
-import { Header } from '../../components/Header'
-import { Scroll } from '../../components/Scroll'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
-import { Title } from '../../components/Title'
-import { Main } from "../../components/Main"
 
-export function Profile() { 
-return(
-  <Container>
+import { useState } from 'react'
+import { useAuth } from '../../hooks/auth'
 
-    <header>
-      <ButtonBack to="/" title="Voltar" icon={FiArrowLeft}/>
-    </header>
+export function Profile() {
+  const { user, updatedProfile } = useAuth()
 
-    <main>
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
+  const [oldPassword, setOldPassword] = useState()
+  const [newPassword, setNewPassword] = useState()
 
-      <Avatar>
-      <img src="https://github.com/ryanx3.png" alt="Foto do usuário" />
+  
+  function handleUpdate() {
+    const user = {
+      name,
+      email,
+      password: newPassword,
+      old_password: oldPassword
+    }
 
-      <label htmlFor="avatar">
-        <FiCamera/>
-      <input type="file" id='avatar'/>
+    updatedProfile({ user })
+  }
 
-      </label>
-      </Avatar>
+  return (
+    <Container>
 
-      <Input icon={FiUser} type="text" placeholder="Nome"/>
-      <Input icon={FiMail} type="email" placeholder="Email"/>
-      <Input icon={FiLock} type="password" placeholder="Senha atual"/>
-      <Input icon={FiLock} type="password" placeholder="Nova senha"/>
+      <header>
+        <ButtonBack to="/" title="Voltar" icon={FiArrowLeft} />
+      </header>
+
+      <main>
+
+        <Avatar>
+          <img src={user.avatar} alt="Foto do usuário" />
+
+          <label htmlFor="avatar">
+            <FiCamera />
+            <input type="file" id='avatar' />
+
+          </label>
+        </Avatar>
+
+        <Input icon={FiUser}
+          placeholder="Nome"
+          onChange={e => setName(e.target.value)}
+          value={name}
+        />
 
 
-    </main>
-  </Container>
-)
+        <Input icon={FiMail}
+          type="email" placeholder="Email"
+          onChange={e => setEmail(e.target.value)}
+          value={user.email}
+        />
+
+        <Input icon={FiLock}
+          type="password"
+          placeholder="Senha atual"
+          onChange={e => setOldPassword(e.target.value)}
+        />
+
+        <Input icon={FiLock}
+          type="password"
+          placeholder="Nova senha"
+          onChange={e => setNewPassword(e.target.value)}
+        />
+
+        <Button title="Salvar alterações" onClick={handleUpdate}/>
+      </main>
+    </Container>
+  )
 }

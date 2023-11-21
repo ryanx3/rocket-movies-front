@@ -14,14 +14,15 @@ export const Container = styled.div`
     margin-right: 1.6rem;
     color: ${({theme}) => theme.COLORS.GRAY_300};
   }
-
+  
   input {
     width: 100%;
     min-width: ${props => `${props.placeholder.length}ch`};
     background: transparent;
     color: ${({theme}) => theme.COLORS.WHITE};
-    border: none;
-
+    border: none; 
+ 
+ 
     &::placeholder {
       color: ${({theme}) => theme.COLORS.GRAY_300};
     }

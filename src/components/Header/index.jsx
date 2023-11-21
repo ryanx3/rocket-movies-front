@@ -2,7 +2,19 @@ import { Container, Profile } from './styles'
 import { Input } from '../Input'
 import { Link } from 'react-router-dom'
 
+import { useAuth } from '../../hooks/auth'
+import { useNavigate } from 'react-router-dom'
 export function Header() {
+
+  const { signUp, user } = useAuth()
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    navigate("/")
+    signUp()
+  }
+
+
   return (
     <Container>
       <h1>RocketMovies</h1>
@@ -12,17 +24,15 @@ export function Header() {
         <div>
 
           <Link to="profile">
-          <p>Ryan Gabriel</p>
+          <p>{user.name}</p>
           </Link>
 
-          <Link to="/">
-          <span>Sair</span>
-          </Link>
+          <span onClick={handleSignOut}>Sair</span>
 
         </div>
 
         <Link to="profile">
-          <img src="https://github.com/ryanx3.png" alt="Foto do usuário" />
+          <img src={user.avatar} alt="Foto do usuário" />
         </Link>
 
       </Profile>

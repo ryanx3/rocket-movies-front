@@ -23,6 +23,10 @@ export const Container = styled.div`
     div:nth-child(3) {
       margin-bottom: 2.4rem;
     }
+
+    div:nth-child(5) {
+      margin-bottom: 2.4rem;
+    }
   }
 `;
 
@@ -31,8 +35,8 @@ export const Avatar = styled.div`
   margin: -9.3rem auto 4rem;
 
   > img {
-    width: 18.6rem;
-    height: 18.6rem;
+    min-width: 18.6rem;
+    min-height: 18.6rem;
     border-radius: 50%;
   }
 

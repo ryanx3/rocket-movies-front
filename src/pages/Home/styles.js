@@ -14,7 +14,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const MainTags = styled.div`
   align-items: flex-start;
   position: relative;
   padding-right: 2.4rem;
