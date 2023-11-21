@@ -37,6 +37,11 @@ export const Avatar = styled.div`
   > img {
     min-width: 18.6rem;
     min-height: 18.6rem;
+
+    width: 18.6rem;
+    height: 18.6rem;
+
+    object-fit: cover;
     border-radius: 50%;
   }
 
@@ -49,7 +54,7 @@ export const Avatar = styled.div`
     justify-content: center;
 
     color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-    background-color: ${({ theme }) => theme.COLORS.RED};
+    background-color: ${({ theme }) => theme.COLORS.PINK};
 
     width: 4.8rem;
     height: 4.8rem;

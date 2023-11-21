@@ -9,6 +9,9 @@ import { Input } from '../../components/Input'
 import { useState } from 'react'
 import { useAuth } from '../../hooks/auth'
 
+import { api } from '../../services/api'
+import AvatarPlaceholder from '../../assets/avatar_placeholder.svg'
+
 export function Profile() {
   const { user, updatedProfile } = useAuth()
 
@@ -17,7 +20,21 @@ export function Profile() {
   const [oldPassword, setOldPassword] = useState()
   const [newPassword, setNewPassword] = useState()
 
-  
+  const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : AvatarPlaceholder
+
+  const [ avatar, setAvatar ] = useState(avatarURL)
+  const [ avatarFile, setAvatarFile] = useState(null)
+
+
+  function handleChangeAvatar(event) {
+    const file = event.target.files[0]
+    setAvatarFile(file)
+
+    const imagePreview = URL.createObjectURL(file)
+    setAvatar(imagePreview)
+  }
+
+
   function handleUpdate() {
     const user = {
       name,
@@ -26,7 +43,7 @@ export function Profile() {
       old_password: oldPassword
     }
 
-    updatedProfile({ user })
+    updatedProfile({ user, avatarFile })
   }
 
   return (
@@ -39,11 +56,11 @@ export function Profile() {
       <main>
 
         <Avatar>
-          <img src={user.avatar} alt="Foto do usuário" />
+          <img src={avatar} alt="Foto do usuário" />
 
           <label htmlFor="avatar">
             <FiCamera />
-            <input type="file" id='avatar' />
+            <input type="file" id='avatar' onChange={handleChangeAvatar} />
 
           </label>
         </Avatar>
@@ -58,7 +75,7 @@ export function Profile() {
         <Input icon={FiMail}
           type="email" placeholder="Email"
           onChange={e => setEmail(e.target.value)}
-          value={user.email}
+          value={email}
         />
 
         <Input icon={FiLock}

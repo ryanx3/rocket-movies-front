@@ -23,22 +23,36 @@ function AuthProvider({ children }) {
 
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message)
+        return alert(error.response.data.message)
       } else {
-        alert("Algo deu errado!")
+        return alert("Algo deu errado!")
       }
     }
   }
 
   async function signUp() {
+    const signOut = confirm("Deseja realmente deslogar agora?")
+    if (signOut === false) {
+      return
+    }
+
     localStorage.removeItem("@rocketmovies:user")
     localStorage.removeItem("@rocketmovies:token")
 
     setData({})
   }
 
-  async function updatedProfile({ user }) {
+  async function updatedProfile({ user, avatarFile }) {
     try {
+
+      if (avatarFile) {
+        const fileUploadForm = new FormData()
+        fileUploadForm.append("avatar", avatarFile)
+
+        const response = await api.patch("/users/avatar", fileUploadForm)
+        user.avatar = response.data.avatar
+      }
+
       api.put("/users", user)
       localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
 
@@ -46,9 +60,9 @@ function AuthProvider({ children }) {
       alert("Perfil atualizado!")
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message)
+        return alert(error.response.data.message)
       } else {
-        alert("Algo deu errado!")
+        return alert("Algo deu errado!")
       }
     }
   }
