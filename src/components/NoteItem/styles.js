@@ -6,21 +6,55 @@ export const Container = styled.div`
   gap: 1.6rem;
 
   padding: 1.6rem;
-  background-color: ${({ theme, $isNew }) => 
-    $isNew ? theme.COLORS.BACKGROUND_700 : "transparent"};
+  background-color: ${({ theme  }) => theme.COLORS.BACKGROUND_700};
 
   border-radius: 1rem;
 
-  border: ${({ theme, $isNew }) => 
-    $isNew ? theme.COLORS.BACKGROUND_700 : `0.2rem dashed ${theme.COLORS.GRAY_300}`};
+  border: ${({ theme,  }) => theme.COLORS.BACKGROUND_700};
 
   input {
     border: none;
     display: flex;
     align-items: center;
     background: transparent;
-    color: ${({ theme, $isNew }) => 
-      $isNew ? theme.COLORS.WHITE : theme.COLORS.GRAY_300};
+    color: ${({ theme,  }) => theme.COLORS.WHITE};
+  }
+
+  button {
+    border: none;
+    display: flex;
+    align-items: center;
+    background: transparent;
+
+    svg {
+      color: ${({ theme }) => theme.COLORS.PINK};
+      font-size: 2.4rem;
+    }
+  }
+`;
+
+export const ContainerNew = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+
+  padding: 1.6rem;
+  background-color: transparent;
+
+  border-radius: 1rem;
+
+  border: 0.2rem dashed;
+
+  input {
+    border: none;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    color: white; 
+
+    &::placeholder {
+      color: ${({ theme  }) => theme.COLORS.GRAY_300}; 
+    }
   }
 
   button {

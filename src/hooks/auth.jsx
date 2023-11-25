@@ -45,11 +45,15 @@ function AuthProvider({ children }) {
   async function updatedProfile({ user, avatarFile }) {
     try {
 
-      if (avatarFile) {
+      //Verifica se já existe um avatar
+      if(avatarFile) {
+        //Cria um formulário
         const fileUploadForm = new FormData()
+        //Criaum campo avatar com o avatarFIle dentro
         fileUploadForm.append("avatar", avatarFile)
-
+        //Manda uma atualização para o users/avatar contendo o formulário com o campo avatar e com o arquivo file do avatar lá dentro
         const response = await api.patch("/users/avatar", fileUploadForm)
+        // Atualiza a propriedade "avatar" do objeto user com o valor retornado pela API
         user.avatar = response.data.avatar
       }
 

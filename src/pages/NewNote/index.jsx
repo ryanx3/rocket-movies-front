@@ -4,7 +4,9 @@ import { Container, InputSection, Footer } from './styles'
 
 import { ButtonBack } from '../../components/ButtonBack'
 import { Textarea } from '../../components/Textarea'
-import { NoteItem } from '../../components/NoteItem'
+
+import * as NoteItem from '../../components/NoteItem/index.jsx'
+
 import { Section } from '../../components/Section'
 import { Header } from '../../components/Header'
 import { Scroll } from '../../components/Scroll'
@@ -34,10 +36,13 @@ export function NewNote() {
           <Textarea placeholder="Observações" />
 
           <Section title="Marcadores">
+
             <div className="backgroundNoteItem">
-              <NoteItem value="React" readOnly $isNew={true} />
-              <NoteItem value="Novo marcador" $isNew={false} />
+              <NoteItem.Root value="React" readOnly/>
+              <NoteItem.New placeholder="Novo Marcador"/>
             </div>
+
+
           </Section>
 
           <Footer>

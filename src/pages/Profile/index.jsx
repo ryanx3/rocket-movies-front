@@ -9,11 +9,15 @@ import { Input } from '../../components/Input'
 import { useState } from 'react'
 import { useAuth } from '../../hooks/auth'
 
+import { useNavigate
+ } from 'react-router-dom'
 import { api } from '../../services/api'
 import AvatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
 export function Profile() {
   const { user, updatedProfile } = useAuth()
+
+  const navigate = useNavigate()
 
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
@@ -25,32 +29,37 @@ export function Profile() {
   const [ avatar, setAvatar ] = useState(avatarURL)
   const [ avatarFile, setAvatarFile] = useState(null)
 
-
-  function handleChangeAvatar(event) {
+ function handleChangeAvatar(event) {
     const file = event.target.files[0]
     setAvatarFile(file)
-
     const imagePreview = URL.createObjectURL(file)
+  
     setAvatar(imagePreview)
+  }
+
+  function handleBack() {
+    navigate(-1)
   }
 
 
   function handleUpdate() {
-    const user = {
+    const updated = {
       name,
       email,
       password: newPassword,
-      old_password: oldPassword
+      old_password: oldPassword,
     }
 
-    updatedProfile({ user, avatarFile })
+    const updatedUser = Object.assign(user, updated)
+    
+    updatedProfile({ user: updatedUser, avatarFile })
   }
 
   return (
     <Container>
 
       <header>
-        <ButtonBack to="/" title="Voltar" icon={FiArrowLeft} />
+        <ButtonBack onClick={handleBack} title="Voltar" icon={FiArrowLeft} />
       </header>
 
       <main>
