@@ -5,9 +5,9 @@ export function Root({ value, onClick, readOnly = true, ...rest }) {
   return (
     <Container>
       <input
-        style={{width: `${value.length}ch`}}
+        style={{maxWidth: `${value.length}ch`}}
         type="text"
-        defaultValue={value}
+        value={value}
         readOnly
         {...rest}
       />
@@ -15,7 +15,7 @@ export function Root({ value, onClick, readOnly = true, ...rest }) {
       <button
         onClick={onClick}
         type="button">
-        <FiPlus />
+        <FiX />
       </button>
     </Container>
   )
@@ -25,19 +25,15 @@ export function New({ onClick, ...rest }) {
   return (
     <ContainerNew>
       <input type="text" 
-      placeholder="Novo Marcador"/>
+      placeholder="Novo Marcador"
+      {...rest}
+      />
 
       <button
         onClick={onClick}
       >
-        <FiX />
+        <FiPlus />
       </button>
     </ContainerNew>
-  )
-}
-
-export function Icon({}) {
-  return(
-    <span></span>
   )
 }

@@ -8,9 +8,9 @@ export const Container = styled.div`
   grid-template-rows: 11.5rem auto;
   grid-template-areas: "header" "content";
 
-  .backgroundNoteItem {
+  .Tags {
+    width: 100%;
     padding: 1.6rem;
-
     border-radius: 0.8rem;
 
     display: flex;
@@ -18,8 +18,9 @@ export const Container = styled.div`
     gap: 2.4rem;
     align-self: stretch;
 
-    background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    flex-wrap: wrap;
 
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     margin: 2.4rem 0 4rem 0;
   }
 `;

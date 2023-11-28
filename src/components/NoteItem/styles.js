@@ -18,6 +18,7 @@ export const Container = styled.div`
     align-items: center;
     background: transparent;
     color: ${({ theme,  }) => theme.COLORS.WHITE};
+    min-width: 0;
   }
 
   button {
@@ -25,7 +26,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     background: transparent;
-
+    
     svg {
       color: ${({ theme }) => theme.COLORS.PINK};
       font-size: 2.4rem;
