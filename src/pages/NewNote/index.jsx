@@ -89,9 +89,9 @@ export function NewNote() {
             <div className="Tags">
 
               {
-                tags.map((tag, indice) => (
+                tags.map((tag, index) => (
                   <NoteItem.Root
-                    key={String(indice)}
+                    key={String(index)}
                     value={tag}
                     onClick={() => handleRemoveTag(tag)}
                   />
