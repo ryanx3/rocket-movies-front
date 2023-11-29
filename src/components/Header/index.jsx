@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <Container>
-      <h1>GiLinda</h1>
+      <h1>RocketMovies</h1>
       <Input placeholder='Pesquisar pelo título' />
 
       <Profile>
