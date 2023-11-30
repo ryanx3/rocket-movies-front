@@ -40,20 +40,30 @@ export function NewNote() {
   }
 
   async function handleAddNote() {
-    if (!title || !rating || !description || !tags) {
-      return alert("É necessário preencher todos os campos para adicionar uma nova nota.")
+
+    const ratingNumber = Number(rating);
+
+    if (!title) {
+      return alert("Digite o título da nota")
+    }
+
+    if (newTag) {
+      return alert("Por favor, adicione uma tag ou deixe o campo em branco para continuar.")
+    }
+
+    if (isNaN(ratingNumber) || ratingNumber < 1 || ratingNumber > 5) {
+      return alert("A sua nota deve ser um número entre 1 e 5.");
     }
 
     await api.post("/notes", {
       title, 
       description, 
-      rating, 
-      tags
+      tags,
+      rating
     })
 
     alert("Nota criada com sucesso")
-
-    navigate("/")
+    navigate(-1)
   }
 
 
@@ -75,7 +85,7 @@ export function NewNote() {
               onChange={e => setTitle(e.target.value)}
             />
             <Input
-              placeholder="Sua nota (de 0 a 5)"
+              placeholder="Sua nota (de 1 a 5)"
               onChange={e => setRating(e.target.value)}
             />
           </InputSection>

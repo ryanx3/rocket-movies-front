@@ -19,15 +19,6 @@ export const Container = styled.div`
       margin-top: 2.4rem;
       color: ${({ theme }) => theme.COLORS.WHITE};
 
-      svg:nth-child(1) {
-        margin-left: 2rem;
-      }
-
-      svg {
-        width: 2rem;
-        height: 2rem;
-        margin-right: 1rem;
-      }
     }
 
     .TagDetails span {

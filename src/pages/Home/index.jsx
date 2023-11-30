@@ -3,47 +3,60 @@ import { FiPlus } from 'react-icons/fi'
 import { Header } from "../../components/Header"
 import { Title } from "../../components/Title"
 import { Note } from "../../components/Note"
-import { Content } from "../../components/Content"
 
 import { Container, MainTags } from "./styles";
 import { useEffect, useState } from 'react'
 
-export function Home() {
+import { api } from "../../services/api"
+import { useNavigate } from 'react-router-dom'
 
-  const [ notes, setNotes ] = useState([])
-  const [ tags, setTags ] = useState([])
+export function Home() {
+  const [search, setSearch] = useState("")
+  const [notes, setNotes] = useState([])
+
+  const navigate = useNavigate()
+
+  async function handleOpenDetails(id) {
+    navigate(`details/${id}`)
+  }
 
   useEffect(() => {
     async function fetchNotes() {
-     const response =  await api.get(`/notes`)
-     setNotes(response.data)
+      const response = await api.get(`/notes?title=${search}`)
+
+      setNotes(response.data)
     }
+
     fetchNotes()
-  }, [])
-  
-  return(
+  }, [search])
+
+  return (
     <Container>
-      <Header/>
+      <Header
+        onInputChange={(e) => setSearch(e.target.value)}
+      />
 
-      <Content> 
+      <main>
 
-        <Title to="/newnote" title="Meus filmes" text="Adicionar filme" icon={FiPlus}/>
-      
+        <Title to="/newnote" title="Meus filmes" text="Adicionar filme" icon={FiPlus} />
+
         <MainTags>
+        <div className="scrollColor"></div>
 
-          <div className="scrollColor"></div>
-
-          {
-            notes.map(note => (
-              <Note
-                key={String(note.id)}
-                data={note}
-              />
-            ))
-          }
+        {
+          notes &&
+          notes.map(note => (
+            <Note
+              key={String(note.id)}
+              data={note}
+              onClick={() => handleOpenDetails(note.id)}
+            />
+          ))
+        }
         </MainTags>
-        
-      </Content>
+
+      </main>
+
     </Container>
   )
 }

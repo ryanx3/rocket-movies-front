@@ -7,8 +7,8 @@ import { api } from '../../services/api'
 
 import { useAuth } from '../../hooks/auth'
 import { useNavigate } from 'react-router-dom'
-export function Header() {
 
+export function Header({onInputChange}) {
   const { signUp, user } = useAuth()
   const navigate = useNavigate()
 
@@ -23,11 +23,12 @@ export function Header() {
   return (
     <Container>
       <h1>RocketMovies</h1>
-      <Input placeholder='Pesquisar pelo título' />
+      <Input placeholder='Pesquisar pelo título' onChange={onInputChange}
+      />
 
       <Profile>
         <div>
-          <Link to="profile">
+          <Link to="/profile">
             <p>{user.name}</p>
           </Link>
 

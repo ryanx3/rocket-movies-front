@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+  overflow-y: hidden;
 
   display: grid;
   grid-template-rows: 11.5rem auto;
@@ -10,23 +11,28 @@ export const Container = styled.div`
 
   > main {
     grid-area: content;
-    margin: 0 12.3rem;
+    margin: 0rem 12.3rem;
+    padding-right: 24px;
+    position: relative;
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(transparent, red);
+      border-radius: 10px;
+      bottom: 0;
+    }
   }
-`;
+  `;
 
 export const MainTags = styled.div`
+  height: 717px;
   align-items: flex-start;
   position: relative;
   padding-right: 2.4rem;
   overflow-y: auto;
 
-  .scrollColor {
-    width: 0.8rem;
-    height: 10rem;
-    border-radius: 1.5rem;
-    background-color: red;
-    position: absolute;
-    top: 0;
-    right: 0.2rem;
-  }
+
 `;
