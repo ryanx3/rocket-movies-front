@@ -7,32 +7,78 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 11.5rem auto;
   grid-template-areas: "header" "content";
+  overflow: hidden;
+  padding-bottom: 2rem;
 
-  section {
-    > h1 {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, red);
+    border-radius: 10px;
+    bottom: 0;
+  }
+  
+  > main {
+    grid-area: content;
+    margin: 4rem 12.3rem 0 12.3rem;
+    padding-right: 24px;
+    position: relative;
+    overflow-y: auto;
+
+    .buttons {
       display: flex;
       align-items: center;
-
-      font-size: 3.6rem;
-      font-weight: 5;
-
-      margin-top: 2.4rem;
-      color: ${({ theme }) => theme.COLORS.WHITE};
-
+      justify-content: space-between;
     }
 
-    .TagDetails span {
-      background-color: ${({ theme }) => theme.COLORS.BACKGROUND_NOTE};
-    }
+
+    > section {
+  
+       h1 {
+        display: flex;
+        align-items: center;
+  
+        font-size: 3.6rem;
+        font-weight: 5;
+  
+        margin-top: 2.4rem;
+        color: ${({ theme }) => theme.COLORS.WHITE};
+  
+         span {
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+          svg {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+          }
+        }
+      }
+      
+      .TagDetails span {
+          background-color: ${({ theme }) => theme.COLORS.BACKGROUND_NOTE};
+        }
+      }
+    
+      section {
+        p:nth-child(1) {
+          margin-top: 4rem;
+          color: ${({ theme }) => theme.COLORS.WHITE};
+          text-align: justify;
+        }
+      }
+
+
+      footer {
+        margin-top: 2rem;
+      }
   }
 
-  section {
-    p:nth-child(1) {
-      margin-top: 4rem;
-      color: ${({ theme }) => theme.COLORS.WHITE};
-      text-align: justify;
-    }
-  }
+
 `
 
 export const Profile = styled.div`

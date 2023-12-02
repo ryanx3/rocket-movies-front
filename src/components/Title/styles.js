@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Link } from "react-router-dom";
+
 
 export const Container = styled.div`
   display: flex;
@@ -13,11 +13,10 @@ export const Container = styled.div`
   margin: 4rem 0;
 `
 
-export const Button = styled(Link)`
+export const Button = styled.button`
   color: #1C1B1E;
   background-color: ${({ theme }) => theme.COLORS.PINK};
   width: auto;
-
   border: none;
   color: ${({ theme }) => theme.COLORS.BACKGROUND_PAGE};
 

@@ -11,7 +11,7 @@ export const Container = styled.textarea`
   position: relative;
   resize: none;
   color: ${({ theme }) => theme.COLORS.WHITE};
-  padding: 1.9rem 0 0 1.6rem;
+  padding: 1.9rem;
   margin: 4rem 0;
     
   &::placeholder {

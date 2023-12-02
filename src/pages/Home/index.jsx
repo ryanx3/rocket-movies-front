@@ -1,8 +1,10 @@
 import { FiPlus } from 'react-icons/fi'
 
 import { Header } from "../../components/Header"
-import { Title } from "../../components/Title"
+
 import { Note } from "../../components/Note"
+
+import * as Title from '../../components/Title'
 
 import { Container, MainTags } from "./styles";
 import { useEffect, useState } from 'react'
@@ -13,6 +15,7 @@ import { useNavigate } from 'react-router-dom'
 export function Home() {
   const [search, setSearch] = useState("")
   const [notes, setNotes] = useState([])
+
 
   const navigate = useNavigate()
 
@@ -37,23 +40,26 @@ export function Home() {
       />
 
       <main>
-
-        <Title to="/newnote" title="Meus filmes" text="Adicionar filme" icon={FiPlus} />
-
-        <MainTags>
-        <div className="scrollColor"></div>
+      
+      <div className="titleLayout">
+        <Title.PageTitle title="Meus filmes" icon={FiPlus} />
+        <Title.IconButton icon={FiPlus} text={"Adicionar filme"} to="/newnote"/>
+      </div>
 
         {
-          notes &&
-          notes.map(note => (
-            <Note
-              key={String(note.id)}
-              data={note}
-              onClick={() => handleOpenDetails(note.id)}
-            />
-          ))
+          notes && 
+          <MainTags>
+            {
+            notes.map((note) => (
+              <Note
+                key={String(note.id)}
+                data={note}
+                onClick={() => handleOpenDetails(note.id)}
+              />
+            ))
+            }
+          </MainTags>
         }
-        </MainTags>
 
       </main>
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-  overflow-y: hidden;
+  overflow: hidden;
 
   display: grid;
   grid-template-rows: 11.5rem auto;
@@ -12,8 +12,14 @@ export const Container = styled.div`
   > main {
     grid-area: content;
     margin: 0rem 12.3rem;
-    padding-right: 24px;
     position: relative;
+    
+    .titleLayout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
     ::-webkit-scrollbar {
       width: 8px;
       height: 10px;
@@ -33,6 +39,4 @@ export const MainTags = styled.div`
   position: relative;
   padding-right: 2.4rem;
   overflow-y: auto;
-
-
 `;
