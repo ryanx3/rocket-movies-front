@@ -42,7 +42,7 @@ export function Home() {
       <main>
       
       <div className="titleLayout">
-        <Title.PageTitle title="Meus filmes" icon={FiPlus} />
+        <Title.PageTitle title="Meus filmes" />
         <Title.IconButton icon={FiPlus} text={"Adicionar filme"} to="/newnote"/>
       </div>
 

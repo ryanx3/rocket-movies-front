@@ -27,29 +27,29 @@ export function NoteUpdated() {
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
-  const [data, setData] = useState([]);
   const [newTag, setNewTags] = useState("");
 
   const params = useParams()
 
-  function backHome() {
-    navigate(-1)
+  function handleBack() {
+    navigate("/")
   }
 
   function handleAddTag() {
-    if (newTag === "") {
-      return alert(`O campo "Novo Marcador" não pode estar vazio.`)
+    if (tags.length === 0 && !newTag.trim()) {
+      return alert(`O campo "Novo Marcador" não pode estar vazio.`);
     }
-
-    setTags(prevState => [...prevState, newTag])
-    setNewTags("")
+  
+  
+    setTags(prevState => [...prevState, newTag]);
+    setNewTags("");
   }
 
   function handleRemoveTag(deleted) {
     setTags(prevState => prevState.filter(tag => tag !== deleted))
-  }
+  } 
 
-  async function handleAddNote() {
+  async function handleUpdateNote() {
 
     const ratingNumber = Number(rating);
 
@@ -62,25 +62,32 @@ export function NoteUpdated() {
     }
 
     if (isNaN(ratingNumber) || ratingNumber < 1 || ratingNumber > 5) {
-      return alert("A sua nota deve ser um número entre 1 e 5.");
+      return alert("Digite uma nota de 1 a 5.");
     }
+      await api.put(`/notes/${params.id}`, {
+        title,
+        description,
+        tags,
+        rating
+      })
 
-    await api.post("/notes", {
-      title,
-      description,
-      tags,
-      rating
-    })
+    alert("Nota atualizada com sucesso!")
+    handleBack()
+  }
 
-    alert("Nota criada com sucesso")
-    navigate(-1)
+  async function handleRemoveNote() {
+    const confirm = window.confirm("Deseja realmente excluir a sua nota?")
+
+    if (confirm) {
+      await api.delete(`/notes/${params.id}`)
+      handleBack()
+    }
   }
 
 
   useEffect(() => {
     async function fetchNote() {
       const response = await api.get(`/notes/${params.id}`)
-      setData(response.data)
       setTitle(response.data.note.title)
       setRating(response.data.note.rating)
       setDescription(response.data.note.description)
@@ -96,7 +103,7 @@ export function NoteUpdated() {
       <main>
         <Content>
 
-          <ButtonBack onClick={backHome} title="Voltar" icon={FiArrowLeft} />
+          <ButtonBack onClick={handleBack} title="Voltar" icon={FiArrowLeft} />
 
           <Title.PageTitle title="Novo filme" />
 
@@ -145,10 +152,11 @@ export function NoteUpdated() {
             <Button title="Excluir nota"
               backgroundColor="#1C1B1E"
               titleColor="#750310"
+              onClick={handleRemoveNote}
             />
             <Button
               title="Salvar alterações"
-              onClick={handleAddNote}
+              onClick={handleUpdateNote}
             />
           </Footer>
 
