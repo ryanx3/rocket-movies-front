@@ -1,17 +1,34 @@
-**Readme - Frontend**
+# Rocket Movies Frontend
 
-```markdown
-# Frontend do Projeto RocketMovies - React, Styled Components, Axios e CORS
+Bem-vindo ao repositório do Rocket Movies Frontend! Este projeto, desenvolvido com React, Styled Components e Axios, oferece uma interface de usuário envolvente para avaliações de filmes armazenadas no backend Rocket Movies.
 
-Este é o repositório do frontend do projeto RocketMovies, desenvolvido com React para construção da interface de usuário, Styled Components para estilização, Axios para comunicação com o backend e CORS para permitir requisições entre diferentes origens.
+## Aprendizados
 
-## Tecnologias Utilizadas
+Durante o desenvolvimento do frontend, adquiri conhecimentos valiosos em diversas áreas:
 
-- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
-- **Styled Components**: Biblioteca para estilização de componentes React.
-- **Axios**: Biblioteca para realizar requisições HTTP no frontend.
-- **CORS**: Middleware utilizado para permitir requisições entre diferentes origens.
-- **Git**: Sistema de controle de versão para gerenciar o histórico de alterações.
+### Desenvolvimento em React:
+
+- Construí a interface do usuário utilizando React, aproveitando a eficiência da biblioteca para criar componentes reutilizáveis.
+- Gerenciei o estado da aplicação de forma eficiente usando hooks e context API.
+
+### Estilização com Styled Components:
+
+- Utilizei Styled Components para estilizar os componentes, criando uma interface atraente e responsiva.
+- Organizei a estilização de forma modular, facilitando a manutenção e escalabilidade.
+
+### Comunicação com o Backend:
+
+- Implementei a integração com o backend utilizando Axios, realizando requisições HTTP de forma assíncrona.
+- Liderei a manipulação de dados provenientes do backend para atualizar dinamicamente a interface de usuário.
+
+### Trabalho com Git:
+
+- Mantive um fluxo de trabalho eficiente com o Git, criando branches para novas funcionalidades, realizando commits significativos e utilizando mensagens descritivas.
+
+## Stack Utilizada
+
+**Front-end:** React, Styled-Components, JavaScript
+**Back-end:** Node.js, Express
 
 ## Configuração e Execução
 
