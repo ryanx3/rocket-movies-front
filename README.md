@@ -1,13 +1,22 @@
-<<<<<<< HEAD
-# React + Vite
+**Readme - Frontend**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```markdown
+# Frontend do Projeto RocketMovies - React, Styled Components, Axios e CORS
 
-Currently, two official plugins are available:
+Este é o repositório do frontend do projeto RocketMovies, desenvolvido com React para construção da interface de usuário, Styled Components para estilização, Axios para comunicação com o backend e CORS para permitir requisições entre diferentes origens.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# rocket-movies-front
-I'm creating this project to test my skills with ReactJS and Styled Components.
->>>>>>> d7ac224ada0b3c7e97bbf4c3006fa4977ffc7cf2
+## Tecnologias Utilizadas
+
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **Styled Components**: Biblioteca para estilização de componentes React.
+- **Axios**: Biblioteca para realizar requisições HTTP no frontend.
+- **CORS**: Middleware utilizado para permitir requisições entre diferentes origens.
+- **Git**: Sistema de controle de versão para gerenciar o histórico de alterações.
+
+## Configuração e Execução
+
+Certifique-se de ter o Node.js instalado. Clone este repositório e execute os seguintes comandos:
+
+```bash
+npm install
+npm start
