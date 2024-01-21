@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  width: 300px;
+  width: 100%;
   padding: 3.2rem;
+  overflow-wrap: break-word;
 
   display: flex;
   align-items: start;
@@ -37,5 +38,7 @@ export const Container = styled.button`
     text-overflow: ellipsis;
     cursor: pointer;
     overflow: hidden;
+
+
   }
 `;
