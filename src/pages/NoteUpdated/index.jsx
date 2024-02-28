@@ -27,11 +27,8 @@ export function NoteUpdated() {
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
-<<<<<<< HEAD
   const [tagsExists, setTagsExists] = useState([]);
   const [data, setData] = useState([]);
-=======
->>>>>>> 5902bfe8cbb9159ffde2a94d427ac144f0d865d1
   const [newTag, setNewTags] = useState("");
 
   const params = useParams()
@@ -54,11 +51,7 @@ export function NoteUpdated() {
     setTags(prevState => prevState.filter(tag => tag !== deleted))
   } 
 
-<<<<<<< HEAD
   async function updateNote() {
-=======
-  async function handleUpdateNote() {
->>>>>>> 5902bfe8cbb9159ffde2a94d427ac144f0d865d1
 
     const ratingNumber = Number(rating);
 
@@ -80,7 +73,6 @@ export function NoteUpdated() {
         rating
       })
 
-<<<<<<< HEAD
     await api.put(`/notes/${params.id}`, {
       title,
       description,
@@ -90,19 +82,6 @@ export function NoteUpdated() {
 
     alert("Nota atualizada com sucesso!")
     navigate("/")
-=======
-    alert("Nota atualizada com sucesso!")
-    handleBack()
-  }
-
-  async function handleRemoveNote() {
-    const confirm = window.confirm("Deseja realmente excluir a sua nota?")
-
-    if (confirm) {
-      await api.delete(`/notes/${params.id}`)
-      handleBack()
-    }
->>>>>>> 5902bfe8cbb9159ffde2a94d427ac144f0d865d1
   }
 
 
@@ -187,11 +166,7 @@ export function NoteUpdated() {
             />
             <Button
               title="Salvar alterações"
-<<<<<<< HEAD
               onClick={updateNote}
-=======
-              onClick={handleUpdateNote}
->>>>>>> 5902bfe8cbb9159ffde2a94d427ac144f0d865d1
             />
           </Footer>
 
