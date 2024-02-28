@@ -27,6 +27,7 @@ export function NoteUpdated() {
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
+  const [tagsExists, setTagsExists] = useState([]);
   const [data, setData] = useState([]);
   const [newTag, setNewTags] = useState("");
 
@@ -49,7 +50,7 @@ export function NoteUpdated() {
     setTags(prevState => prevState.filter(tag => tag !== deleted))
   }
 
-  async function handleAddNote() {
+  async function updateNote() {
 
     const ratingNumber = Number(rating);
 
@@ -65,15 +66,15 @@ export function NoteUpdated() {
       return alert("A sua nota deve ser um número entre 1 e 5.");
     }
 
-    await api.post("/notes", {
+    await api.put(`/notes/${params.id}`, {
       title,
       description,
       tags,
       rating
     })
 
-    alert("Nota criada com sucesso")
-    navigate(-1)
+    alert("Nota atualizada com sucesso!")
+    navigate("/")
   }
 
 
@@ -84,6 +85,7 @@ export function NoteUpdated() {
       setTitle(response.data.note.title)
       setRating(response.data.note.rating)
       setDescription(response.data.note.description)
+      setTagsExists(response.data.tags)
     }
 
     fetchNote()
@@ -131,6 +133,15 @@ export function NoteUpdated() {
                   />
                 ))
               }
+              {
+                tagsExists.map((tag, index) => (
+                  <NoteItem.Root
+                    key={String(index)}
+                    value={tag.name}
+                    onClick={() => handleRemoveTag(tag)}
+                  />
+                ))
+              }
 
               <NoteItem.New
                 onChange={e => setNewTags(e.target.value)}
@@ -148,7 +159,7 @@ export function NoteUpdated() {
             />
             <Button
               title="Salvar alterações"
-              onClick={handleAddNote}
+              onClick={updateNote}
             />
           </Footer>
 

@@ -10,6 +10,7 @@ export const Container = styled.div`
   main {
     margin: 23.5rem auto;
     padding: 0 16rem;
+    align-self: center;
 
     h1 {
       color: ${({ theme }) => theme.COLORS.RED};
