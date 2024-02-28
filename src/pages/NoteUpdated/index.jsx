@@ -27,30 +27,38 @@ export function NoteUpdated() {
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
+<<<<<<< HEAD
   const [tagsExists, setTagsExists] = useState([]);
   const [data, setData] = useState([]);
+=======
+>>>>>>> 5902bfe8cbb9159ffde2a94d427ac144f0d865d1
   const [newTag, setNewTags] = useState("");
 
   const params = useParams()
 
-  function backHome() {
-    navigate(-1)
+  function handleBack() {
+    navigate("/")
   }
 
   function handleAddTag() {
-    if (newTag === "") {
-      return alert(`O campo "Novo Marcador" não pode estar vazio.`)
+    if (tags.length === 0 && !newTag.trim()) {
+      return alert(`O campo "Novo Marcador" não pode estar vazio.`);
     }
-
-    setTags(prevState => [...prevState, newTag])
-    setNewTags("")
+  
+  
+    setTags(prevState => [...prevState, newTag]);
+    setNewTags("");
   }
 
   function handleRemoveTag(deleted) {
     setTags(prevState => prevState.filter(tag => tag !== deleted))
-  }
+  } 
 
+<<<<<<< HEAD
   async function updateNote() {
+=======
+  async function handleUpdateNote() {
+>>>>>>> 5902bfe8cbb9159ffde2a94d427ac144f0d865d1
 
     const ratingNumber = Number(rating);
 
@@ -63,9 +71,16 @@ export function NoteUpdated() {
     }
 
     if (isNaN(ratingNumber) || ratingNumber < 1 || ratingNumber > 5) {
-      return alert("A sua nota deve ser um número entre 1 e 5.");
+      return alert("Digite uma nota de 1 a 5.");
     }
+      await api.put(`/notes/${params.id}`, {
+        title,
+        description,
+        tags,
+        rating
+      })
 
+<<<<<<< HEAD
     await api.put(`/notes/${params.id}`, {
       title,
       description,
@@ -75,13 +90,25 @@ export function NoteUpdated() {
 
     alert("Nota atualizada com sucesso!")
     navigate("/")
+=======
+    alert("Nota atualizada com sucesso!")
+    handleBack()
+  }
+
+  async function handleRemoveNote() {
+    const confirm = window.confirm("Deseja realmente excluir a sua nota?")
+
+    if (confirm) {
+      await api.delete(`/notes/${params.id}`)
+      handleBack()
+    }
+>>>>>>> 5902bfe8cbb9159ffde2a94d427ac144f0d865d1
   }
 
 
   useEffect(() => {
     async function fetchNote() {
       const response = await api.get(`/notes/${params.id}`)
-      setData(response.data)
       setTitle(response.data.note.title)
       setRating(response.data.note.rating)
       setDescription(response.data.note.description)
@@ -98,7 +125,7 @@ export function NoteUpdated() {
       <main>
         <Content>
 
-          <ButtonBack onClick={backHome} title="Voltar" icon={FiArrowLeft} />
+          <ButtonBack onClick={handleBack} title="Voltar" icon={FiArrowLeft} />
 
           <Title.PageTitle title="Novo filme" />
 
@@ -156,10 +183,15 @@ export function NoteUpdated() {
             <Button title="Excluir nota"
               backgroundColor="#1C1B1E"
               titleColor="#750310"
+              onClick={handleRemoveNote}
             />
             <Button
               title="Salvar alterações"
+<<<<<<< HEAD
               onClick={updateNote}
+=======
+              onClick={handleUpdateNote}
+>>>>>>> 5902bfe8cbb9159ffde2a94d427ac144f0d865d1
             />
           </Footer>
 

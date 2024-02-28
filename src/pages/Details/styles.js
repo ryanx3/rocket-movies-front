@@ -68,14 +68,20 @@ export const Container = styled.div`
         p:nth-child(1) {
           margin-top: 4rem;
           color: ${({ theme }) => theme.COLORS.WHITE};
-          text-align: justify;
+          position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -20px;
+          width: 100%;
+          height: 1px; 
+          background-color: ${({ theme }) => theme.COLORS.PINK}; 
+          box-shadow: 0px 0px 2px 0px red; 
         }
       }
-
-
-      footer {
-        margin-top: 2rem;
-      }
+    }
   }
 
 

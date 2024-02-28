@@ -46,7 +46,7 @@ function AuthProvider({ children }) {
     try {
 
       //Verifica se já existe um avatar
-      if(avatarFile) {
+      if (avatarFile) {
         //Cria um formulário
         const fileUploadForm = new FormData()
         //Criaum campo avatar com o avatarFIle dentro

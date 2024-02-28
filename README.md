@@ -1,13 +1,39 @@
-<<<<<<< HEAD
-# React + Vite
+# Rocket Movies Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao repositório do Rocket Movies Frontend! Este projeto, desenvolvido com React, Styled Components e Axios, oferece uma interface de usuário envolvente para avaliações de filmes armazenadas no backend Rocket Movies.
 
-Currently, two official plugins are available:
+## Aprendizados
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# rocket-movies-front
-I'm creating this project to test my skills with ReactJS and Styled Components.
->>>>>>> d7ac224ada0b3c7e97bbf4c3006fa4977ffc7cf2
+Durante o desenvolvimento do frontend, adquiri conhecimentos valiosos em diversas áreas:
+
+### Desenvolvimento em React:
+
+- Construí a interface do usuário utilizando React, aproveitando a eficiência da biblioteca para criar componentes reutilizáveis.
+- Gerenciei o estado da aplicação de forma eficiente usando hooks e context API.
+
+### Estilização com Styled Components:
+
+- Utilizei Styled Components para estilizar os componentes, criando uma interface atraente e responsiva.
+- Organizei a estilização de forma modular, facilitando a manutenção e escalabilidade.
+
+### Comunicação com o Backend:
+
+- Implementei a integração com o backend utilizando Axios, realizando requisições HTTP de forma assíncrona.
+- Liderei a manipulação de dados provenientes do backend para atualizar dinamicamente a interface de usuário.
+
+### Trabalho com Git:
+
+- Mantive um fluxo de trabalho eficiente com o Git, criando branches para novas funcionalidades, realizando commits significativos e utilizando mensagens descritivas.
+
+## Stack Utilizada
+
+**Front-end:** React, Styled-Components, JavaScript
+**Back-end:** Node.js, Express
+
+## Configuração e Execução
+
+Certifique-se de ter o Node.js instalado. Clone este repositório e execute os seguintes comandos:
+
+```bash
+npm install
+npm start

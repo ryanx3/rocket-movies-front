@@ -10,7 +10,7 @@ export const Container = styled.div`
 
   border-radius: 1rem;
 
-  border: ${({ theme,  }) => theme.COLORS.BACKGROUND_700};
+  border: ${({ theme  }) => theme.COLORS.BACKGROUND_700};
 
   input {
     border: none;

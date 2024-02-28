@@ -31,40 +31,50 @@ export const Container = styled.div`
 `;
 
 export const Avatar = styled.div`
+  padding: 1.2rem 3.2rem;
+  border-radius: 0.8rem;
   position: relative;
-  margin: -9.3rem auto 4rem;
 
-  > img {
-    min-width: 18.6rem;
-    min-height: 18.6rem;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
+  color: ${({ theme }) => theme.COLORS.WHITE};
 
-    width: 18.6rem;
-    height: 18.6rem;
-
-    object-fit: cover;
-    border-radius: 50%;
+  &:focus-within {
+    outline: 1px solid ${({ theme }) => theme.COLORS.WHITE};
   }
 
   > label {
-    position: absolute;
+    display: flex;
+    gap: 0.8rem;
     cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    span {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
 
-    color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-    background-color: ${({ theme }) => theme.COLORS.PINK};
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
-    width: 4.8rem;
-    height: 4.8rem;
-    border-radius: 50%;
-
-    right: 0.7rem;
-    bottom: 0.7rem;
+      max-width: calc(100vw - 16rem);
+    }
 
     input {
-      display: none;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+
+      width: 100%;
+    }
+
+    svg, span {
+      transition: filter 0.2s;
+    }
+
+    &:hover {
+      svg, span {
+        filter: brightness(0.9);
+      }
     }
   }
 `;

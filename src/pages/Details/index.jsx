@@ -43,7 +43,7 @@ export function Details() {
     navigate(-1)
   }
 
-  async function handleOpenDetails(id) {
+  async function handleUpdateNote(id) {
     navigate(`/noteupdate/${id}`)
   }
 
@@ -76,7 +76,7 @@ export function Details() {
 
           <div className="buttons">
             <ButtonBack onClick={handleBack} title="Voltar" icon={FiArrowLeft} />
-            <ButtonBack onClick={handleRemove} title="Excluir nota" />
+            <ButtonBack onClick={() => handleUpdateNote(data.note.id)} title="Editar ou excluir nota" />
           </div>
 
           <Section>
@@ -103,13 +103,6 @@ export function Details() {
               {data.note.description}
             </p>
           </Section>
-
-          <footer>
-            <Button
-              title="Editar Nota"
-              onClick={() => handleOpenDetails(data.note.id)}
-            />
-          </footer>
 
         </main>
       }

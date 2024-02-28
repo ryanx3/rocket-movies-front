@@ -27,13 +27,14 @@ export function Note({ data, icon: Icon, ...rest }) {
       <div>{ratingStars()}</div>
       <p>{data.description}</p>
 
-        {
-          data.movie_tags &&
-          <footer> {
-            data.movie_tags.map(tag => <Tag key={tag.id} title={tag.name} />)
+      {
+        data.movie_tags &&
+        <footer>
+          {
+            data.movie_tags.map(tag => <Tag key={tag.id} title={tag.name}/>)
           }
-          </footer>
-        }
+        </footer>
+      }
     </Container>
   )
 }

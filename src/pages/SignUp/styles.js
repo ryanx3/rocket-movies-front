@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BackgroundLogin from '../../assets/BackgroundLogin.png';
+import background from '../../images/background.png'
 
 export const Container = styled.div`
   width: 100%;
@@ -51,7 +51,7 @@ export const Container = styled.div`
 `;
 
 export const Background = styled.div`
-  background: url(${BackgroundLogin}) no-repeat center center;
+  background: url(${background}) no-repeat center center;
   background-size: cover;
   flex: 1;
   opacity: 0.7;
